@@ -17,8 +17,9 @@ partial struct NetcodePlayerInputSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        foreach (RefRW<NetcodePlayerInput> netcodePlayerInput
-                in SystemAPI.Query<RefRW<NetcodePlayerInput>>().WithAll<GhostOwnerIsLocal>())
+        foreach ((RefRW<NetcodePlayerInput> netcodePlayerInput,
+                RefRW <MyValue> myValue)
+                in SystemAPI.Query<RefRW<NetcodePlayerInput>, RefRW<MyValue>>().WithAll<GhostOwnerIsLocal>())
         {
 
             float2 inputVector = new float2();
