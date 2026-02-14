@@ -7,6 +7,11 @@ using UnityEngine;
 [UpdateInGroup(typeof(PredictedSimulationSystemGroup))]
 partial struct ShootSystem : ISystem
 {
+    public void OnCreate(ref SystemState state)
+    {
+        state.RequireForUpdate<NetworkTime>();
+        state.RequireForUpdate<NetcodePlayerInput>();
+    }
 
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
