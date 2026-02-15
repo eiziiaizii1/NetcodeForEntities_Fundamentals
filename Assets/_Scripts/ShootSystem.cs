@@ -12,7 +12,7 @@ partial struct ShootSystem : ISystem
         state.RequireForUpdate<NetworkTime>();
         state.RequireForUpdate<NetcodePlayerInput>();
     }
-
+ 
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
